@@ -1,0 +1,18 @@
+# OSX
+.DS_Store
+
+# Eclipse
+.project
+.metadata
+bin/**
+*.swp
+.classpath
+.settings/
+.externalToolBuilders
+
+# svn
+.svn/
+
+#maven
+./target/
+bin
