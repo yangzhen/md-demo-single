@@ -1,10 +1,12 @@
-package com.md.demo.server.util;
+package com.md.demo.server.web;
 
 import java.util.Collections;
 
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import com.md.demo.server.util.HttpClientUtil;
 
 /**
  * http接口demo
@@ -15,7 +17,7 @@ public class HttpTest {
     
     private static final Logger logger = LoggerFactory.getLogger(HttpTest.class);
     
-    private String host = "http://localhost:8090";
+    private String host = "http://www.baidu.com";
     
     @Test
     public void testLogin() {

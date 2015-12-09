@@ -10,16 +10,16 @@ package com.md.demo.server.bean.vo;
  */
 public class TestGetResult {
 
-	private String result;
+	private String text;
 
 	private int id;
 
-	public String getResult() {
-		return result;
+	public String getText() {
+		return text;
 	}
 
-	public void setResult(String result) {
-		this.result = result;
+	public void setText(String text) {
+		this.text = text;
 	}
 
 	public int getId() {
