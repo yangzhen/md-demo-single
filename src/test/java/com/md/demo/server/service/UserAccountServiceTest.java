@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.md.demo.server.bean.entry.UserAccount;
 import com.md.demo.server.service.UserAccountService;
-import com.md.demo.server.utl.BaseTestAbstact;
+import com.md.demo.server.util.BaseTestAbstact;
 
 public class UserAccountServiceTest extends BaseTestAbstact {
 

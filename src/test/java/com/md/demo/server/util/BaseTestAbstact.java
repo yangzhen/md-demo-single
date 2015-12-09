@@ -1,4 +1,4 @@
-package com.md.demo.server.utl;
+package com.md.demo.server.util;
 
 import java.net.URL;
 

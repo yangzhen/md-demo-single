@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.md.demo.server.bean.entry.TestMap;
 import com.md.demo.server.dal.dao.TestDAO;
-import com.md.demo.server.utl.BaseTestAbstact;
+import com.md.demo.server.util.BaseTestAbstact;
 
 /**
  * 忽略此单元测试，请连接正确的库

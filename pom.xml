@@ -21,6 +21,7 @@
 		<spring.version>3.2.9.RELEASE</spring.version>
 		<servlet.version>2.5</servlet.version>
 		<junit.version>4.12</junit.version>
+		<httpclient.version>4.0</httpclient.version>
 	</properties>
 
 	<dependencies>
@@ -150,6 +151,12 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
 			<version>1.1.43</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>${httpclient.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

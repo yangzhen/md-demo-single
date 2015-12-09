@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.md.demo.server.bean.entry.UserAccount;
 import com.md.demo.server.dal.manager.UserAccountManager;
-import com.md.demo.server.utl.BaseTestAbstact;
+import com.md.demo.server.util.BaseTestAbstact;
 
 /**
  * 

@@ -5,7 +5,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.md.demo.server.service.TestService;
-import com.md.demo.server.utl.BaseTestAbstact;
+import com.md.demo.server.util.BaseTestAbstact;
 
 public class TestServiceTest extends BaseTestAbstact{
 	

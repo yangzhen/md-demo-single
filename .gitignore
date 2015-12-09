@@ -14,5 +14,5 @@ bin/**
 .svn/
 
 #maven
-./target/
+target/
 bin
