@@ -7,11 +7,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 测试登陆，及登陆拦截器
- * UserHttpTest 
- * @author xinyan.yang
- * @date 2015年8月17日 下午6:08:17
- *
+ * http接口demo
+ * 
+ * @author yangzhen 2015年12月9日 上午10:33:51
  */
 public class HttpTest {
     
