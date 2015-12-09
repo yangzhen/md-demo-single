@@ -74,6 +74,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>${servlet.version}</version>
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis</groupId>
@@ -190,6 +191,7 @@
 	</dependencies>
 
 	<build>
+		<finalName>md-demo-single</finalName>
 		<testResources>
 			<testResource>
 				<directory>src/test/resources</directory>
@@ -219,6 +221,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>2.10.3</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -228,6 +231,7 @@
 			</plugin>
 			<plugin>
 				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.3</version>
 				<executions>
 					<execution>
 						<id>attach-javadocs</id>
@@ -396,7 +400,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
-					<warName>${build.finalName}-${env}-${BUILD_NUMBER}</warName>
+					<warName>${project.build.finalName}-${env}-${BUILD_NUMBER}</warName>
 					<webResources>
 						<resource>
 							<directory>src/main/webapp</directory>

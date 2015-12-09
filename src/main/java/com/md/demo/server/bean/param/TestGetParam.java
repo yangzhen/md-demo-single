@@ -1,5 +1,7 @@
 package com.md.demo.server.bean.param;
 
+import com.sun.tools.javac.util.List;
+
 /**
  * 
  * TestGetParam
@@ -13,6 +15,8 @@ public class TestGetParam {
 	public int id;
 
 	public String text;
+
+	
 
 	public int getId() {
 		return id;
