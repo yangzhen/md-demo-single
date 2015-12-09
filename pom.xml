@@ -400,7 +400,7 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.6</version>
 				<configuration>
-					<warName>${project.build.finalName}-${env}-${BUILD_NUMBER}</warName>
+					<warName>${project.build.finalName}-${env}</warName>
 					<webResources>
 						<resource>
 							<directory>src/main/webapp</directory>
