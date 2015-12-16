@@ -36,4 +36,8 @@ public class TestServiceImpl implements TestService {
 		return text;
 	}
 
+	public void setTestDAO(TestDAO testDAO) {
+		this.testDAO = testDAO;
+	}
+	
 }

@@ -54,6 +54,7 @@ public class UserAccountManagerTest extends BaseTestAbstact {
 	}
 
 	@Test
+	@Ignore
 	public void testDouble() {
 		double d = 133.23;
 		double d_three = 3 * d;

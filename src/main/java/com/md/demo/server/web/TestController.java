@@ -1,5 +1,8 @@
 package com.md.demo.server.web;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -54,12 +57,14 @@ public class TestController {
 					RES_STATUS.ERROR_PARAM.name());
 		} else {
 			int id = param.getId();
-			String text = null;
 			try {
 				//text = testService.testResult(id);
-				text = "aaa";
 				TestGetResult data = new TestGetResult();
-				data.setResult(text);
+				List<String> list = new ArrayList();
+				list.add("aa");
+				list.add("bb");
+				data.setStrList(list);
+				data.setText(param.getText());
 				data.setId(id);
 				ret = new Result<TestGetResult>(data, RES_STATUS.SUCCESS.code,
 						RES_STATUS.SUCCESS.name());
@@ -87,7 +92,7 @@ public class TestController {
 		return ret;
 	}
 
-	@RequestMapping("test_double")
+	@RequestMapping("test")
 	@ResponseBody
 	public String testDuoble() {
 		double d = 133.23;

@@ -211,7 +211,7 @@ public class HttpClientUtil {
 		}
 		try {
 			return new StringEntity(params,HTTP.UTF_8);
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			return null;
 		}
 	}
