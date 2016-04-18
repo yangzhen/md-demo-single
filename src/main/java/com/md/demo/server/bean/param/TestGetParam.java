@@ -1,6 +1,5 @@
 package com.md.demo.server.bean.param;
 
-import com.sun.tools.javac.util.List;
 
 /**
  * 

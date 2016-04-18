@@ -8,12 +8,13 @@
 
 	<properties>
 		<spring.version>3.2.9.RELEASE</spring.version>
-		<servlet.version>2.5</servlet.version>
+		<servlet.version>3.1.0</servlet.version>
 		<junit.version>4.12</junit.version>
-		<httpclient.version>4.3.6</httpclient.version>
+		<httpclient.version>4.0</httpclient.version>
 		<jdk.version>1.6</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<jetty.version>8.1.15.v20140411</jetty.version>
 	</properties>
 
 	<dependencies>
@@ -58,10 +59,9 @@
 			<artifactId>commons-lang</artifactId>
 			<version>2.6</version>
 		</dependency>
-
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
+			<artifactId>javax.servlet-api</artifactId>
 			<version>${servlet.version}</version>
 			<scope>provided</scope>
 		</dependency>
@@ -156,36 +156,9 @@
 			<artifactId>guava</artifactId>
 			<version>18.0</version>
 		</dependency>
-		<!-- rest json valida start -->
-		<dependency>
-			<groupId>com.jayway.restassured</groupId>
-			<artifactId>json-schema-validator</artifactId>
-			<version>2.4.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.hamcrest</groupId>
-			<artifactId>hamcrest-core</artifactId>
-			<version>1.3</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.jayway.restassured</groupId>
-			<artifactId>rest-assured</artifactId>
-			<version>2.4.1</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>1.10.19</version>
-			<scope>test</scope>
-		</dependency>
-		<!-- rest json valida start -->
 	</dependencies>
 
 	<build>
-		<finalName>md-demo-single</finalName>
 		<testResources>
 			<testResource>
 				<directory>src/test/resources</directory>
@@ -205,252 +178,120 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.2</version>
-				<configuration>
-					<source>${jdk.version}</source>
-					<target>${jdk.version}</target>
-					<encoding>UTF-8</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-source-plugin</artifactId>
-				<version>2.10.3</version>
-				<executions>
-					<execution>
-						<id>attach-sources</id>
-						<phase>deploy</phase>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.10.3</version>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<phase>deploy</phase>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-resources-plugin</artifactId>
 				<version>2.7</version>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat6-maven-plugin</artifactId>
-				<version>2.2</version>
 				<configuration>
-					<port>8081</port>
-					<path>/${project.build.finalName}</path>
-					<uriEncoding>UTF-8</uriEncoding>
+					<encoding>utf8</encoding>
 				</configuration>
-				<executions>
-					<execution>
-						<id>start-tomcat</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<fork>true</fork>
-						</configuration>
-					</execution>
-					<execution>
-						<id>stop-tomcat</id>
-						<phase>post-integration-test</phase>
-						<goals>
-							<goal>shutdown</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+					<encoding>utf8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.12.1</version>
 				<configuration>
-					<excludes>
-						<exclude>**/*IntegrationTest*</exclude>
-					</excludes>
+					<argLine> -XX:-UseSplitVerifier</argLine>
 				</configuration>
+				<version>2.17</version>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-failsafe-plugin</artifactId>
-				<version>2.12.4</version>
-				<configuration>
-					<includes>
-						<include>**/*IntegrationTest*</include>
-					</includes>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>integration-test</goal>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+
+			<!-- cobertura-maven-plugin -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>cobertura-maven-plugin</artifactId>
 				<version>2.7</version>
-				<configuration>
-					<formats>
-						<format>xml</format>
-						<format>html</format>
-					</formats>
-					<check>
-						<branchRate>0</branchRate>
-						<lineRate>0</lineRate>
-						<haltOnFailure>false</haltOnFailure>
-						<totalBranchRate>0</totalBranchRate>
-						<totalLineRate>0</totalLineRate>
-						<packageLineRate>0</packageLineRate>
-						<packageBranchRate>0</packageBranchRate>
-						<regexes>
-							<regex>
-								<pattern>com.example.reallyimportant.*</pattern>
-								<branchRate>90</branchRate>
-								<lineRate>80</lineRate>
-							</regex>
-							<regex>
-								<pattern>com.example.boringcode.*</pattern>
-								<branchRate>40</branchRate>
-								<lineRate>30</lineRate>
-							</regex>
-						</regexes>
-					</check>
-				</configuration>
 				<executions>
 					<execution>
-						<id>cobertura</id>
-						<phase>verify</phase>
 						<goals>
 							<goal>clean</goal>
-							<goal>check</goal>
-							<goal>cobertura</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>1.9</version>
-				<executions>
-					<execution>
-						<id>add-resource</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>add-resource</goal>
-						</goals>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>src/build/${env}</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-					<execution>
-						<id>add-test-resource</id>
-						<phase>generate-test-resources</phase>
-						<goals>
-							<goal>add-test-resource</goal>
-						</goals>
-						<configuration>
-							<resources>
-								<resource>
-									<directory>src/build/${env}</directory>
-								</resource>
-							</resources>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>com.google.code.echo-maven-plugin</groupId>
-				<artifactId>echo-maven-plugin</artifactId>
-				<version>1.0.0</version>
-				<inherited>false</inherited>
-				<configuration>
-					<message>Use ${env} environment config files for compile</message>
-				</configuration>
-				<executions>
-					<execution>
-						<goals>
-							<goal>echo</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
+
+			<!-- war打包插件, 设定war包名称不带版本号 -->
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>2.6</version>
+				<version>2.3</version>
 				<configuration>
-					<warName>${project.build.finalName}-${env}</warName>
 					<webResources>
 						<resource>
-							<directory>src/main/webapp</directory>
-							<filtering>true</filtering>
-							<includes>
-								<include>index.html</include>
-							</includes>
+							<!-- 元配置文件的目录，相对于pom.xml文件的路径 -->
+							<directory>src/main/webapp/WEB-INF</directory>
+							<filtering>true</filtering> <!-- 过滤WEB-INF下配置文件中的placeholder -->
+							<!-- 目标路径 -->
+							<targetPath>WEB-INF</targetPath>
 						</resource>
 					</webResources>
 				</configuration>
 			</plugin>
-		</plugins>
-	</build>
-	<reporting>
-		<plugins>
+			<!-- 本地开发环境通过mvn jetty:run 启动 start port:8090 -->
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.7</version>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>${jetty.version}</version>
 				<configuration>
-					<formats>
-						<format>html</format>
-						<format>xml</format>
-					</formats>
-					<check />
+					<stopKey>stop</stopKey>
+					<stopPort>8044</stopPort>
+					<scanIntervalSeconds>1</scanIntervalSeconds>
+					<webApp>
+						<contextPath>/</contextPath>
+					</webApp>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>8090</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
 				</configuration>
 			</plugin>
 		</plugins>
-	</reporting>
+		<finalName>md-demo-single-${env.war}</finalName>
+	</build>
 	<profiles>
+
 		<profile>
-			<id>dev</id>
+			<!-- 测试环境 mvn clean package -Dmaven.test.skip=true -Denv=test -->
+			<id>test</id>
+			<properties>
+				<jdbc.url>jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;amp;characterEncoding=utf-8</jdbc.url>
+				<jdbc.username>root</jdbc.username>
+				<jdbc.password>123456</jdbc.password>
+				<env.war>test</env.war>
+			</properties>
 			<activation>
-				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>env</name>
+					<value>test</value>
+				</property>
 			</activation>
-			<properties>
-				<env>dev</env>
-			</properties>
 		</profile>
+
 		<profile>
-			<id>local</id>
+			<!-- 开发环境 mvn clean package -Dmaven.test.skip=true -Denv=dev -->
+			<id>dev</id>
 			<properties>
-				<env>local</env>
+				<jdbc.url>jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;amp;characterEncoding=utf-8</jdbc.url>
+				<jdbc.username>root</jdbc.username>
+				<jdbc.password>123456</jdbc.password>
+				<env.war>dev</env.war>
 			</properties>
-		</profile>
-		<profile>
-			<id>pub</id>
-			<properties>
-				<env>pub</env>
-			</properties>
-		</profile>
-		<profile>
-			<id>prod</id>
-			<properties>
-				<env>prod</env>
-			</properties>
+			<activation>
+				<!-- 默认激活本环境 -->
+				<activeByDefault>true</activeByDefault>
+				<property>
+					<name>env</name>
+					<value>dev</value>
+				</property>
+			</activation>
 		</profile>
 	</profiles>
 </project>

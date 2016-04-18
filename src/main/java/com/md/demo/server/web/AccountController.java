@@ -29,7 +29,7 @@ public class AccountController {
 	
 	@RequestMapping("show")
 	@ResponseBody
-	public Result<UserAccount> show(@RequestParam("user_id")int userId, HttpServletRequest request) {
+	public Result<UserAccount> show(@RequestParam("userId")int userId, HttpServletRequest request) {
 		long start = System.currentTimeMillis();
 		Result<UserAccount> result = new Result<UserAccount>();
 		String ip = IPUtil.getIp(request);

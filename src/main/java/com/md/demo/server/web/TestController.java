@@ -1,8 +1,5 @@
 package com.md.demo.server.web;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -58,13 +55,9 @@ public class TestController {
 		} else {
 			int id = param.getId();
 			try {
-				//text = testService.testResult(id);
+				String text = testService.testResult(id);
 				TestGetResult data = new TestGetResult();
-				List<String> list = new ArrayList();
-				list.add("aa");
-				list.add("bb");
-				data.setStrList(list);
-				data.setText(param.getText());
+				data.setText(text);
 				data.setId(id);
 				ret = new Result<TestGetResult>(data, RES_STATUS.SUCCESS.code,
 						RES_STATUS.SUCCESS.name());
@@ -73,6 +66,7 @@ public class TestController {
 						e.getErrorMsg());
 			} catch (Exception e) {
 				logger.error(param.getId() + ",getDemo error" , e);
+				ret.setStatus(RES_STATUS.SERVICE_ERROR);
 			}
 		}
 

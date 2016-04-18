@@ -18,6 +18,8 @@
 	<context:component-scan base-package="com.md.demo.server">
 		<context:exclude-filter type="annotation"
 			expression="org.springframework.stereotype.Controller" />
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.web.bind.annotation.ControllerAdvice" />
 	</context:component-scan>
 
 	<aop:aspectj-autoproxy />
@@ -48,15 +50,18 @@
 	<tx:annotation-driven transaction-manager="transactionManager"
 		proxy-target-class="true" />
 
+	<!--db transaction template -->
+	<bean id="dbTransactionTemplate"
+		class="org.springframework.transaction.support.TransactionTemplate">
+		<property name="transactionManager" ref="transactionManager" />
+	</bean>
+
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
-		<property name="driverClassName" value="${db.driverClassName}"/>
-		<property name="url" value="${db.url}" />
-		<property name="username" value="${db.userName}" />
-		<property name="password" value="${db.password}"/>
-
+		<property name="url" value="jdbc:mysql://localhost:3306/md_demo" />
+		<property name="username" value="root" />
+		<property name="password" value="123456"/>
 		<property name="filters" value="stat" />
-
 		<property name="maxActive" value="20" />
 		<property name="initialSize" value="1" />
 		<property name="maxWait" value="60000" />
