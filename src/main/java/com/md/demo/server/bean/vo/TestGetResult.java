@@ -1,6 +1,5 @@
 package com.md.demo.server.bean.vo;
 
-import java.util.List;
 
 /**
  * 
@@ -16,8 +15,6 @@ public class TestGetResult {
 
 	private int id;
 
-	List<String> strList;
-
 	public String getText() {
 		return text;
 	}
@@ -32,14 +29,6 @@ public class TestGetResult {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public List<String> getStrList() {
-		return strList;
-	}
-
-	public void setStrList(List<String> strList) {
-		this.strList = strList;
 	}
 
 }

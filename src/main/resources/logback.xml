@@ -30,7 +30,7 @@
 			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %5p %c{1}:%L - %m%n</pattern>
 		</encoder>
 		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
-			<level>INFO</level>
+			<level>TRACE</level>
 		</filter>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<fileNamePattern>${app.logs.path}/root.log.%d{yyyy-MM-dd}
@@ -57,11 +57,11 @@
 	</appender>
 	
 
-	<logger name="login" additivity="false" level="INFO">
+	<logger name="login" additivity="false" level="DEBUG">
 		<appender-ref ref="LOGIN" />
 	</logger>
 
-	<root level="INFO">
+	<root level="TRACE">
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="ROOT" />
 	</root>
