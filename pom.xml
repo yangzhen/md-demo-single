@@ -163,15 +163,25 @@
 			<testResource>
 				<directory>src/test/resources</directory>
 				<includes>
-					<include>**</include>
+					<include>**.**</include>
 				</includes>
 			</testResource>
 		</testResources>
 		<resources>
 			<resource>
-				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<directory>src/main/resources/</directory>
 				<includes>
 					<include>**</include>
+				</includes>
+			</resource>
+			<!-- 使用filter过滤一些配置 -->
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources/</directory>
+				<includes>
+					<include>config.properties</include>
+					<!-- <include>logback.xml</include> -->
 				</includes>
 			</resource>
 		</resources>
@@ -257,7 +267,6 @@
 		<finalName>md-demo-single-${env.war}</finalName>
 	</build>
 	<profiles>
-
 		<profile>
 			<!-- 测试环境 mvn clean package -Dmaven.test.skip=true -Denv=test -->
 			<id>test</id>
@@ -266,6 +275,8 @@
 				<jdbc.username>root</jdbc.username>
 				<jdbc.password>123456</jdbc.password>
 				<env.war>test</env.war>
+				<sync.data.queue>queue.thread.sync.customer.cif</sync.data.queue>
+				<brokerURL>failover:(tcp://127.0.0.1:61616)</brokerURL>
 			</properties>
 			<activation>
 				<property>
@@ -283,6 +294,8 @@
 				<jdbc.username>root</jdbc.username>
 				<jdbc.password>123456</jdbc.password>
 				<env.war>dev</env.war>
+				<sync.data.queue>queue.thread.sync.customer.cif</sync.data.queue>
+				<brokerURL>failover:(tcp://127.0.0.1:61616)</brokerURL>
 			</properties>
 			<activation>
 				<!-- 默认激活本环境 -->

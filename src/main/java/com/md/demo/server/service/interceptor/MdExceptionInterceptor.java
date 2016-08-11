@@ -33,7 +33,7 @@ public class MdExceptionInterceptor {
 
     private static final Logger logger = LoggerFactory.getLogger(MdExceptionInterceptor.class);
     
-    private static final Logger login = LoggerFactory.getLogger("login");
+    private static final Logger login = LoggerFactory.getLogger("stat");
 
     /**
      * 拦截md已知异常

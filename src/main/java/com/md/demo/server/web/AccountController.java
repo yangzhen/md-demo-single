@@ -25,44 +25,20 @@ public class AccountController {
 	@Autowired
 	private UserAccountService service;
 	
-	private static final Logger login = LoggerFactory.getLogger("login");
+	private static final Logger stat = LoggerFactory.getLogger("stat");
 	
 	@RequestMapping("show")
 	@ResponseBody
 	public Result<UserAccount> show(@RequestParam("userId")int userId, HttpServletRequest request) {
-		long start = System.currentTimeMillis();
 		Result<UserAccount> result = new Result<UserAccount>();
-		String ip = IPUtil.getIp(request);
 		if(userId <= 0 ) {
 			result.setStatus(RES_STATUS.ERROR_PARAM);
 		} else {
-			try {
 				UserAccount userAccount = service.findAccountByUserId(userId);
 				result = new Result<UserAccount>(RES_STATUS.SUCCESS);
 				result.setStatus(RES_STATUS.SUCCESS);
 				result.setData(userAccount);
-			} catch(MdException e) {
-				result.setCode(e.getErrorCode());
-				result.setMsg(e.getErrorMsg());
-			} catch (Exception e) {
-				result.setStatus(RES_STATUS.SERVICE_ERROR);
-			}
 		}
-		long methodCost = System.currentTimeMillis() - start;
-
-		StringBuilder sb = new StringBuilder();
-		sb.append(request.getRequestURI());
-		sb.append(Constant.LOG_SPLIT);
-		sb.append(userId);
-		sb.append(Constant.LOG_SPLIT);
-		sb.append(ip);
-		sb.append(Constant.LOG_SPLIT);
-		sb.append(result.getMsg());
-		sb.append(Constant.LOG_SPLIT);
-		sb.append(result.getCode());
-		sb.append(Constant.LOG_SPLIT);
-		sb.append(methodCost);
-		login.info(sb.toString());
 		return result;
 	}
 	

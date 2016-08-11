@@ -35,7 +35,7 @@ public class TestController {
 	@Autowired
 	private TestService testService;
 
-	private static final Logger login = LoggerFactory.getLogger("login");
+	private static final Logger stat = LoggerFactory.getLogger("stat");
 	
 	private static final Logger logger = LoggerFactory.getLogger(TestController.class);
 	
@@ -82,7 +82,7 @@ public class TestController {
 		sb.append(ret.getMsg());
 		sb.append(Constant.LOG_SPLIT);
 		sb.append(methodCost);
-		login.info(sb.toString());
+		stat.info(sb.toString());
 		return ret;
 	}
 

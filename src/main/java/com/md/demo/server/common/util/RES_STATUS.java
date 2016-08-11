@@ -1,5 +1,7 @@
 package com.md.demo.server.common.util;
 
+import com.md.demo.server.common.constant.Constant;
+
 /**
  * 
  * RES_STATUS 
@@ -8,7 +10,7 @@ package com.md.demo.server.common.util;
  *
  */
 public enum RES_STATUS {
-	
+    
 	//10000 ~ 10199 通用异常码
 	ERROR_PARAM(10001),
 	SERVICE_ERROR(10011), 
@@ -37,5 +39,13 @@ public enum RES_STATUS {
 		}
 		return null;
 	}
+	
+	public static String isSuccess(int code) {
+        if (code == RES_STATUS.SUCCESS.code) {
+            return Constant.METHOD_SUCCESS;
+        } else {
+            return Constant.METHOD_FAIL;
+        }
+    }
 
 }

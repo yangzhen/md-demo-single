@@ -11,4 +11,8 @@ public class Constant {
 	
 	public static final String LOG_SPLIT = "|";
 
+	public static final String METHOD_SUCCESS = "Y"; // 方法响应成功
+	
+    public static final String METHOD_FAIL = "N"; // 方法响应失败
+
 }
