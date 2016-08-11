@@ -10,6 +10,8 @@ package com.md.demo.server.common.constant;
 public class Constant {
 	
 	public static final String LOG_SPLIT = "|";
+	
+	public static final String STAT_LOG = "stat";
 
 	public static final String METHOD_SUCCESS = "Y"; // 方法响应成功
 	

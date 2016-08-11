@@ -23,7 +23,7 @@ public class UserAccountManager {
 			return dao.findAccountByUserId(userId);
 		} catch (Exception e) {
 			logger.error("findAccountByUserId error,userId:{}", userId, e);
-			throw new MdException(RES_STATUS.SERVICE_ERROR);
+			throw new MdException(RES_STATUS.SERVER_UNKONW_ERROR);
 		}
 	}
 
@@ -40,7 +40,7 @@ public class UserAccountManager {
 		} catch (Exception e) {
 			logger.error("removeMoney error,userId:{},money:{}", userId, money, e);
 		}
-		throw new MdException(RES_STATUS.SERVICE_ERROR);
+		throw new MdException(RES_STATUS.SERVER_UNKONW_ERROR);
 	}
 
 	public void addMoney(int userId, double money) {
@@ -49,14 +49,14 @@ public class UserAccountManager {
 			if(result == 1) {
 				return;
 			} else {
-				throw new MdException(RES_STATUS.SERVICE_ERROR);
+				throw new MdException(RES_STATUS.SERVER_UNKONW_ERROR);
 			}
 		} catch(MdException e) {
 			throw e;
 		} catch (Exception e) {
 			logger.error("addMoney error,userId:{},money:{}", userId, money, e);
 		}
-		throw new MdException(RES_STATUS.SERVICE_ERROR);
+		throw new MdException(RES_STATUS.SERVER_UNKONW_ERROR);
 	}
 
 }

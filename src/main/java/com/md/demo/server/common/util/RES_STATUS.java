@@ -4,48 +4,52 @@ import com.md.demo.server.common.constant.Constant;
 
 /**
  * 
- * RES_STATUS 
- * @author chenchao
- * @date Jul 14, 2015 8:19:32 PM
+ * @author yangzhen
  *
  */
 public enum RES_STATUS {
-    
-	//10000 ~ 10199 通用异常码
-	ERROR_PARAM(10001),
-	SERVICE_ERROR(10011), 
+
+	SUCCESS(0, "操作成功"),
+
+	SERVER_UNKONW_ERROR(500, "服务器开小差了,请稍后再试"),
+
+	BAD_PARAM(400, "bad param"),
 	
-	//10200 ~ 10299 account相关
-	ACCOUNT_NOT_ENOUGH(10240),
+	USER_NOT_EXIST(10100, "用户不存在"),
 	
-	//10300 ~ 10399 user相关
-	USER_NOT_EXIST(20344),
-	
-	
-	
-	SUCCESS(0);
-	
-	RES_STATUS(int code) {
+	ACCOUNT_NOT_ENOUGH(10200, "余额不足"),
+
+	;
+
+	RES_STATUS(int code, String msg) {
 		this.code = code;
+		this.msg = msg;
 	}
 
 	public final int code;
-	
+	public final String msg;
+
 	public static RES_STATUS findStatusByCode(int code) {
-		for(RES_STATUS status : RES_STATUS.values()) {
-			if(status.code == code) {
+		for (RES_STATUS status : RES_STATUS.values()) {
+			if (status.code == code) {
 				return status;
 			}
 		}
 		return null;
 	}
-	
+
+	/**
+	 * success:Y not success:N
+	 *
+	 * @param code
+	 * @return
+	 */
 	public static String isSuccess(int code) {
-        if (code == RES_STATUS.SUCCESS.code) {
-            return Constant.METHOD_SUCCESS;
-        } else {
-            return Constant.METHOD_FAIL;
-        }
-    }
+		if (code == RES_STATUS.SUCCESS.code) {
+			return Constant.METHOD_SUCCESS;
+		} else {
+			return Constant.METHOD_FAIL;
+		}
+	}
 
 }

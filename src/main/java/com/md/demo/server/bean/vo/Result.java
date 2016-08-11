@@ -41,6 +41,13 @@ public class Result<T> {
 		this.code = code;
 		this.msg = msg;
 	}
+	
+	public Result(T data,RES_STATUS status) {
+		super();
+		this.data = data;
+		this.code = status.code;
+		this.msg = status.name();
+	}
 
 	public Result(T data, int code, String msg) {
 		super();

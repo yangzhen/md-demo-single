@@ -23,7 +23,7 @@ public class TestManager {
 			return dao.selectTest(id);
 		} catch(Exception e) {
 			logger.error("select testMap error,id:{}", id, e);
-			throw new MdException(RES_STATUS.SERVICE_ERROR);
+			throw new MdException(RES_STATUS.SERVER_UNKONW_ERROR);
 		}
 	}
 }
