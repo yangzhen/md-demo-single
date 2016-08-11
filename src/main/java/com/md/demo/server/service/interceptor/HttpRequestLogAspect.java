@@ -35,6 +35,7 @@ import com.md.demo.server.common.util.RequestUtil;
  * 打印http请求监控日志
  * RequestMappingAspect 
  * @author yangxinyan
+ * @param <T>
  * @date 2016年1月13日 上午11:31:20
  *
  */
@@ -48,7 +49,7 @@ public class HttpRequestLogAspect {
 	
 	
 	@Around("@annotation(org.springframework.web.bind.annotation.ResponseBody)")
-	public Object processRequestLog(ProceedingJoinPoint jp) {
+	public Result<?> processRequestLog(ProceedingJoinPoint jp) {
 		long start = System.currentTimeMillis();
 		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder
 				.getRequestAttributes()).getRequest();
@@ -65,9 +66,9 @@ public class HttpRequestLogAspect {
 			resultCode = result.getCode();
 			long cost = System.currentTimeMillis() - start;
 			stat.info(request.getRequestURI() + LOG_SPLIT + RequestUtil.getIp(request) + LOG_SPLIT + RES_STATUS.isSuccess(resultCode) 
-					+ LOG_SPLIT + resultCode + LOG_SPLIT + cost + LOG_SPLIT + JSONObject.toJSONString(map)+LOG_SPLIT+jp);
+					+ LOG_SPLIT + resultCode + LOG_SPLIT + cost + LOG_SPLIT + JSONObject.toJSONString(map));
 			logger.info(request.getRequestURI() + LOG_SPLIT + RequestUtil.getIp(request) + LOG_SPLIT + RES_STATUS.isSuccess(resultCode) 
-			+ LOG_SPLIT + resultCode + LOG_SPLIT + cost + LOG_SPLIT + JSONObject.toJSONString(map)+LOG_SPLIT+jp);
+			+ LOG_SPLIT + resultCode + LOG_SPLIT + cost + LOG_SPLIT + JSONObject.toJSONString(map));
 		} catch (MdException e) {
 			long cost = System.currentTimeMillis() - start;
 			resultCode = e.getErrorCode();

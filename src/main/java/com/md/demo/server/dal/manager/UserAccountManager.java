@@ -55,8 +55,8 @@ public class UserAccountManager {
 			throw e;
 		} catch (Exception e) {
 			logger.error("addMoney error,userId:{},money:{}", userId, money, e);
+			throw new MdException(RES_STATUS.SERVER_UNKONW_ERROR);
 		}
-		throw new MdException(RES_STATUS.SERVER_UNKONW_ERROR);
 	}
 
 }
