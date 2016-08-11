@@ -24,6 +24,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.md.demo.server.bean.vo.Result;
 import com.md.demo.server.common.constant.Constant;
@@ -66,9 +67,9 @@ public class HttpRequestLogAspect {
 			resultCode = result.getCode();
 			long cost = System.currentTimeMillis() - start;
 			stat.info(request.getRequestURI() + LOG_SPLIT + RequestUtil.getIp(request) + LOG_SPLIT + RES_STATUS.isSuccess(resultCode) 
-					+ LOG_SPLIT + resultCode + LOG_SPLIT + cost + LOG_SPLIT + JSONObject.toJSONString(map));
+					+ LOG_SPLIT + resultCode + LOG_SPLIT + cost + LOG_SPLIT + JSONObject.toJSONString(map) + LOG_SPLIT + JSON.toJSONString(result));
 			logger.info(request.getRequestURI() + LOG_SPLIT + RequestUtil.getIp(request) + LOG_SPLIT + RES_STATUS.isSuccess(resultCode) 
-			+ LOG_SPLIT + resultCode + LOG_SPLIT + cost + LOG_SPLIT + JSONObject.toJSONString(map));
+			+ LOG_SPLIT + resultCode + LOG_SPLIT + cost + LOG_SPLIT + JSONObject.toJSONString(map) + LOG_SPLIT + JSON.toJSONString(result));
 		} catch (MdException e) {
 			long cost = System.currentTimeMillis() - start;
 			resultCode = e.getErrorCode();
