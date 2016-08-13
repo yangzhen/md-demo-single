@@ -17,13 +17,9 @@ import com.md.demo.server.service.TestService;
 
 /**
  * 
- * TestController
- * 
- * @author chenchao
- * @date Jul 14, 2015 10:40:02 AM
+ * @author yangzhen
  *
  */
-
 @Controller
 @RequestMapping("/")
 public class TestController {
@@ -62,5 +58,13 @@ public class TestController {
 		json.put("desc", "double calc call problem");
 		return json.toJSONString();
 	}
-
+	
+	@ResponseBody
+	@RequestMapping("getConfig")
+	public Result<JSONObject> getConfig() {
+		Result<JSONObject> result = new Result<>(RES_STATUS.SUCCESS);
+		JSONObject jsonObject = testService.getConfig();
+		result.setData(jsonObject);
+		return result;
+	}
 }

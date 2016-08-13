@@ -7,7 +7,7 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-			/WEB-INF/spring/application-*.xml
+			classpath:application-*.xml
 		</param-value>
 	</context-param>
 	<context-param>
@@ -52,9 +52,4 @@
 	<session-config>
 		<session-timeout>20</session-timeout>
 	</session-config>
-
-	<error-page>
-		<error-code>404</error-code>
-		<location>/WEB-INF/views/error/404.jsp</location>
-	</error-page>
 </web-app>

@@ -1,14 +1,16 @@
 package com.md.demo.server.service;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * 
- * TestService 
- * @author chenchao
- * @date Jul 14, 2015 2:40:47 PM
+ * @author yangzhen
  *
  */
 public interface TestService {
 
 	public String testResult(int id);
+	
+	public JSONObject getConfig();
 
 }

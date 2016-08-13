@@ -7,14 +7,13 @@
 	<version>1.0-SNAPSHOT</version>
 
 	<properties>
-		<spring.version>3.2.9.RELEASE</spring.version>
+		<spring.version>4.3.1.RELEASE</spring.version>
 		<servlet.version>3.1.0</servlet.version>
 		<junit.version>4.12</junit.version>
-		<httpclient.version>4.5.2</httpclient.version>
-		<jdk.version>1.6</jdk.version>
+		<jdk.version>1.8</jdk.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<jetty.version>8.1.15.v20140411</jetty.version>
+		<jetty.version>9.2.17.v20160517</jetty.version>
 	</properties>
 
 	<dependencies>
@@ -55,26 +54,21 @@
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.6</version>
-		</dependency>
-		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
-			<version>${servlet.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
-			<version>3.1.1</version>
+			<version>3.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis-spring</artifactId>
-			<version>1.1.1</version>
+			<version>1.2.2</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
+			<version>4.1.6.RELEASE</version>
+		</dependency>
+		<!-- aop -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -88,22 +82,17 @@
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
-			<version>2.2.2</version>
+			<version>3.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
-			<version>1.0.9</version>
+			<version>1.0.13</version>
 		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.23</version>
-		</dependency>
-		<dependency>
-			<groupId>commons-collections</groupId>
-			<artifactId>commons-collections</artifactId>
-			<version>3.2</version>
+			<version>5.1.34</version>
 		</dependency>
 		<!-- logback begin -->
 		<!-- commons-logging调用切换为slf4j-api调用 -->
@@ -121,17 +110,12 @@
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-core</artifactId>
-			<version>1.1.2</version>
+			<version>1.1.4</version>
 		</dependency>
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
-			<version>1.1.2</version>
-		</dependency>
-		<dependency>
-			<groupId>log4j</groupId>
-			<artifactId>log4j</artifactId>
-			<version>1.2.16</version>
+			<version>1.1.4</version>
 		</dependency>
 		<!-- logback end -->
 		<dependency>
@@ -143,21 +127,85 @@
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>fastjson</artifactId>
-			<version>1.1.43</version>
+			<version>1.2.7</version>
 		</dependency>
+		<!-- http start -->
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
-			<version>${httpclient.version}</version>
+			<version>4.5.2</version>
 		</dependency>
+		<!-- end -->
 		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>18.0</version>
 		</dependency>
+		<!-- commons codec for base64 md5 -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+		<!-- quartz -->
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.1</version>
+		</dependency>
+
+		<!-- hibernate validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>5.2.4.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.el</groupId>
+			<artifactId>javax.el-api</artifactId>
+			<version>3.0.0</version>
+		</dependency>
+
+		<!-- jetty -->
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-servlet</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.jetty</groupId>
+			<artifactId>jetty-webapp</artifactId>
+			<version>${jetty.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>${servlet.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jsoup</groupId>
+			<artifactId>jsoup</artifactId>
+			<version>1.8.3</version>
+		</dependency>
 	</dependencies>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
 		<testResources>
 			<testResource>
 				<directory>src/test/resources</directory>
@@ -167,6 +215,10 @@
 			</testResource>
 		</testResources>
 		<resources>
+			<resource>
+				<targetPath>webapp</targetPath>
+				<directory>src/main/webapp</directory>
+			</resource>
 			<resource>
 				<filtering>true</filtering>
 				<directory>src/main/resources/</directory>
@@ -180,130 +232,87 @@
 				<directory>src/main/resources/</directory>
 				<includes>
 					<include>config.properties</include>
-					<!-- <include>logback.xml</include> -->
 				</includes>
 			</resource>
 		</resources>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-resources-plugin</artifactId>
-				<version>2.7</version>
-				<configuration>
-					<encoding>utf8</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<version>2.3.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-					<encoding>utf8</encoding>
-				</configuration>
-			</plugin>
-			<plugin>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<configuration>
-					<argLine> -XX:-UseSplitVerifier</argLine>
-				</configuration>
-				<version>2.17</version>
-			</plugin>
-
-			<!-- cobertura-maven-plugin -->
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>cobertura-maven-plugin</artifactId>
-				<version>2.7</version>
-				<executions>
-					<execution>
-						<goals>
-							<goal>clean</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<!-- war打包插件, 设定war包名称不带版本号 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>2.3</version>
-				<configuration>
-					<webResources>
-						<resource>
-							<!-- 元配置文件的目录，相对于pom.xml文件的路径 -->
-							<directory>src/main/webapp/WEB-INF</directory>
-							<filtering>true</filtering> <!-- 过滤WEB-INF下配置文件中的placeholder -->
-							<!-- 目标路径 -->
-							<targetPath>WEB-INF</targetPath>
-						</resource>
-					</webResources>
-				</configuration>
-			</plugin>
-			<!-- 本地开发环境通过mvn jetty:run 启动 start port:8090 -->
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>jetty-maven-plugin</artifactId>
-				<version>${jetty.version}</version>
-				<configuration>
-					<stopKey>stop</stopKey>
-					<stopPort>8044</stopPort>
-					<scanIntervalSeconds>1</scanIntervalSeconds>
-					<webApp>
-						<contextPath>/</contextPath>
-					</webApp>
-					<connectors>
-						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
-							<port>8090</port>
-							<maxIdleTime>60000</maxIdleTime>
-						</connector>
-					</connectors>
-				</configuration>
-			</plugin>
-		</plugins>
-		<finalName>md-demo-single-${env.war}</finalName>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.9.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-javadoc-plugin</artifactId>
+					<version>2.9.1</version>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>2.3.2</version>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<!-- 本地开发环境通过mvn jetty:run 启动 start port:8090 -->
+				<plugin>
+					<groupId>org.eclipse.jetty</groupId>
+					<artifactId>jetty-maven-plugin</artifactId>
+					<version>${jetty.version}</version>
+					<configuration>
+						<stopKey>stop</stopKey>
+						<stopPort>8044</stopPort>
+						<scanIntervalSeconds>1</scanIntervalSeconds>
+						<webApp>
+							<contextPath>/</contextPath>
+						</webApp>
+						<httpConnector>
+							<port>8888</port>
+						</httpConnector>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 	<profiles>
+		<!-- 开发环境 -->
 		<profile>
-			<!-- 测试环境 mvn clean package -Dmaven.test.skip=true -Denv=test -->
-			<id>test</id>
-			<properties>
-				<jdbc.url>jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;amp;characterEncoding=utf-8</jdbc.url>
-				<jdbc.username>root</jdbc.username>
-				<jdbc.password>123456</jdbc.password>
-				<env.war>test</env.war>
-				<sync.data.queue>queue.thread.sync.customer.cif</sync.data.queue>
-				<brokerURL>failover:(tcp://127.0.0.1:61616)</brokerURL>
-			</properties>
-			<activation>
-				<property>
-					<name>env</name>
-					<value>test</value>
-				</property>
-			</activation>
-		</profile>
-
-		<profile>
-			<!-- 开发环境 mvn clean package -Dmaven.test.skip=true -Denv=dev -->
 			<id>dev</id>
-			<properties>
-				<jdbc.url>jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&amp;amp;characterEncoding=utf-8</jdbc.url>
-				<jdbc.username>root</jdbc.username>
-				<jdbc.password>123456</jdbc.password>
-				<env.war>dev</env.war>
-				<sync.data.queue>queue.thread.sync.customer.cif</sync.data.queue>
-				<brokerURL>failover:(tcp://127.0.0.1:61616)</brokerURL>
-			</properties>
 			<activation>
-				<!-- 默认激活本环境 -->
 				<activeByDefault>true</activeByDefault>
-				<property>
-					<name>env</name>
-					<value>dev</value>
-				</property>
 			</activation>
+			<properties>
+				<jdbc.url>jdbc:mysql://10.255.33.87:3306/test</jdbc.url>
+				<jdbc.user>sales</jdbc.user>
+				<jdbc.password>qwe123!@#</jdbc.password>
+				<sync.data.queue>queue.test.cif</sync.data.queue>
+				<sync.data.brokerURL>failover:(tcp://127.0.0.1:61616)</sync.data.brokerURL>
+			</properties>
+		</profile>
+		<profile>
+			<!-- qa、运维环境 -->
+			<id>sa</id>
+			<properties>
+				<jdbc.url>#{jdbc.url}</jdbc.url>
+				<jdbc.user>#{jdbc.user}</jdbc.user>
+				<jdbc.password>#{jdbc.password}</jdbc.password>
+				<sync.data.queue>#{sync.data.queue}</sync.data.queue>
+				<sync.data.brokerURL>#{brokerURL}</sync.data.brokerURL>
+			</properties>
+		</profile>
+		<!-- 本地环境 -->
+		<profile>
+			<id>local</id>
+			<properties>
+				<jdbc.url>jdbc:mysql://127.0.0.1:3306/test</jdbc.url>
+				<jdbc.user>root</jdbc.user>
+				<jdbc.password>123456</jdbc.password>
+				<sync.data.queue>queue.test.cif</sync.data.queue>
+				<sync.data.brokerURL>failover:(tcp://127.0.0.1:61616)</sync.data.brokerURL>
+			</properties>
 		</profile>
 	</profiles>
 </project>
