@@ -26,7 +26,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.alibaba.fastjson.JSON;
 
-public class MdRESTTemplate {
+public class MdRestTemplate {
 
 	private static final int default_connectionTimeout = 30 * 1000;
 	private static final int default_socketTimeout = 30 * 1000;
@@ -34,21 +34,21 @@ public class MdRESTTemplate {
 	private int socketTimeout = 30 * 1000;
 	private int minsTimeoutTime = 1000;
 
-	private static final Logger logger = LoggerFactory.getLogger(MdRESTTemplate.class);
+	private static final Logger logger = LoggerFactory.getLogger(MdRestTemplate.class);
 
-	public MdRESTTemplate() {
+	public MdRestTemplate() {
 		this(default_connectionTimeout, default_socketTimeout);
 	}
 
-	public MdRESTTemplate(int connectionTimeout, int socketTimeout) {
+	public MdRestTemplate(int connectionTimeout, int socketTimeout) {
 		this.connectionTimeout = connectionTimeout < this.minsTimeoutTime ? default_connectionTimeout
 				: connectionTimeout;
 		this.socketTimeout = socketTimeout < this.minsTimeoutTime ? default_socketTimeout
 				: socketTimeout;
 	}
 
-	public static MdRESTTemplate getNewInstance() {
-		MdRESTTemplate ucRESTTemplate = new MdRESTTemplate();
+	public static MdRestTemplate getNewInstance() {
+		MdRestTemplate ucRESTTemplate = new MdRestTemplate();
 		return ucRESTTemplate;
 	}
 

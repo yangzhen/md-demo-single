@@ -11,6 +11,6 @@ public interface TestService {
 
 	public String testResult(int id);
 	
-	public JSONObject getConfig();
+	public JSONObject getConfig(String key);
 
 }

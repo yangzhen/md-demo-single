@@ -39,9 +39,10 @@ public class TestServiceImpl implements TestService {
 	}
 	
 	@Override
-	public JSONObject getConfig() {
+	public JSONObject getConfig(String key) {
 		logger.info("[test spring 常量注入],sync.data.queue:{},brokerURL:{}",this.queueName);
 		JSONObject json = new JSONObject();
+		json.put("key", key);
 		json.put("sync.data.queue", queueName);
 		return json;
 	}

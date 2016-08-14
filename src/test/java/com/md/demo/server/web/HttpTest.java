@@ -1,12 +1,10 @@
 package com.md.demo.server.web;
 
-import java.util.Collections;
-
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.md.demo.server.util.HttpClientUtil;
+import com.md.demo.server.common.http.MdRestTemplate;
 
 /**
  * http接口demo
@@ -21,8 +19,8 @@ public class HttpTest {
     
     @Test
     public void testLogin() {
-        String url = "/test_double";
-        String result = HttpClientUtil.post(host + url, Collections.EMPTY_MAP, null);
+        String url = "/";
+        String result = MdRestTemplate.getNewInstance().sendHttpsGet(url, String.class);
         logger.info("result:" + result);
     }
     
