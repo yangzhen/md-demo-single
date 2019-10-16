@@ -203,6 +203,13 @@
 			<artifactId>jsoup</artifactId>
 			<version>1.8.3</version>
 		</dependency>
+
+		<dependency>
+			<groupId>com.hwl.themis</groupId>
+			<artifactId>themis-log-sdk-core</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -283,8 +290,8 @@
 			</activation>
 			<properties>
 				<jdbc.url>jdbc:mysql://127.0.0.1:3306/test</jdbc.url>
-				<jdbc.user>root</jdbc.user>
-				<jdbc.password>yunfei8yunfei</jdbc.password>
+				<jdbc.user>admin</jdbc.user>
+				<jdbc.password>admin123</jdbc.password>
 				<sync.data.queue>queue.test.cif</sync.data.queue>
 				<sync.data.brokerURL>failover:(tcp://127.0.0.1:61616)</sync.data.brokerURL>
 			</properties>
@@ -305,8 +312,8 @@
 			<id>local</id>
 			<properties>
 				<jdbc.url>jdbc:mysql://127.0.0.1:3306/test</jdbc.url>
-				<jdbc.user>root</jdbc.user>
-				<jdbc.password>123456</jdbc.password>
+				<jdbc.user>admin</jdbc.user>
+				<jdbc.password>admin123</jdbc.password>
 				<sync.data.queue>queue.test.cif</sync.data.queue>
 				<sync.data.brokerURL>failover:(tcp://127.0.0.1:61616)</sync.data.brokerURL>
 			</properties>
