@@ -65,4 +65,17 @@
 		<appender-ref ref="CONSOLE" />
 		<appender-ref ref="ROOT" />
 	</root>
+
+	<appender name="THEMIS-STAT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<File>${log.path}/themis-stat-sdk.log</File>
+		<encoder>
+			<pattern>%m%n</pattern>
+		</encoder>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/themis-stat-sdk.log.%d{yyyy-MM-dd}</fileNamePattern>
+		</rollingPolicy>
+	</appender>
+	<logger name="THEMIS-STAT" additivity="false" level="DEBUG">
+		<appender-ref ref="THEMIS-STAT"/>
+	</logger>
 </configuration>

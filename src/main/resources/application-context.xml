@@ -74,8 +74,8 @@
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
 		<property name="url" value="jdbc:mysql://127.0.0.1:3306/test" />
-		<property name="username" value="root" />
-		<property name="password" value="yunfei8yunfei"/>
+		<property name="username" value="admin" />
+		<property name="password" value="admin123"/>
 		<property name="filters" value="stat" />
 		<property name="maxActive" value="20" />
 		<property name="initialSize" value="1" />
@@ -93,4 +93,6 @@
 		<property name="maxPoolPreparedStatementPerConnectionSize"
 			value="20" />
 	</bean>
+
+	<import resource="classpath:themis-log-context.xml" />
 </beans>	

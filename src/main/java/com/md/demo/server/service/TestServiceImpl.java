@@ -1,5 +1,7 @@
 package com.md.demo.server.service;
 
+import com.hwl.themis.log.annoation.LogItem;
+import com.hwl.themis.log.annoation.LogMapping;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,7 @@ public class TestServiceImpl implements TestService {
 	private static Logger logger = LoggerFactory.getLogger(TestServiceImpl.class);
 	
 	@Override
+	@LogMapping(item = LogItem.ALL)
 	public String testResult(int id) {
 		TestMap test = testManager.selectTest(id);
 		if (test != null) {

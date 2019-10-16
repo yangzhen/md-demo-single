@@ -35,7 +35,7 @@ public class TestController {
 	public Result<TestGetResult> getDemo(TestGetParam param, HttpServletRequest request) {
 
 		Result<TestGetResult> ret = new Result<>();
-		if (param.getId() > 0) {
+		if (param.getId() < 0) {
 			ret.setStatus(RES_STATUS.BAD_PARAM);
 		} else {
 			int id = param.getId();
